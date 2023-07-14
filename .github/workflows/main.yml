@@ -15,8 +15,7 @@ name: Checkmarx SAST/SCA Scan
 on:
   push:
     branches:
-      - main
-      - master  
+      - cxflow_GHA
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,7 +35,7 @@ jobs:
         incremental: false
         break_build: true
         error_merge: true
-        scanners: sast
+        scanners: sca
         bug_tracker: wait
         sca_api_url: https://api.scacheckmarx.com
         sca_app_url: https://sca.scacheckmarx.com
@@ -44,4 +43,4 @@ jobs:
         sca_tenant: SCA-Champions  # <-- Insert Checkmarx CxSCA Tenant
         sca_username: ${{ secrets.CHECKMARX_SCA_USERNAME }} # To be stored in GitHub Secrets.
         sca_password: ${{ secrets.CHECKMARX_SCA_PASSWORD }} # To be stored in GitHub Secrets.
-        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --repo-url="<GitHubRepoUrl>" --cx-flow.filterSeverity --cx-flow.filterCategory
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --repo-url=${{ github.event.repository.url }} --cx-flow.filterSeverity --cx-flow.filterCategory
