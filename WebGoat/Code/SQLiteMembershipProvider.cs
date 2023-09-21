@@ -793,7 +793,7 @@ namespace TechInfoSystems.Data.SQLite
 						cn.Open ();
 
 					using (SqliteDataReader dr = cmd.ExecuteReader((CommandBehavior.SingleRow))) {
-						string password, passwordAnswer, passwordSalt;
+						string notapword, passwordAnswer, passwordSalt;
 						MembershipPasswordFormat passwordFormat;
 
 						if (dr.HasRows) {
@@ -1015,7 +1015,7 @@ namespace TechInfoSystems.Data.SQLite
 		{
 			string salt;
 			MembershipPasswordFormat passwordFormat;
-			string passwordFromDb;
+			string notapword; //passwordFromDb;
 			int status;
 			int failedPwdAttemptCount;
 			int failedPwdAnswerAttemptCount;
