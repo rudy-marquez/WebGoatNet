@@ -13,7 +13,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Remove unneeded files
         run: |
-          rm -rf test DB_Scripts .git
+          ls -l
+          rm -rf test DB_Scripts .github
           ls -l
       - name: Checkmarx One CLI Action
         uses: checkmarx/ast-github-action@main #Github Action version
@@ -23,5 +24,4 @@ jobs:
           base_uri: https://deu.ast.checkmarx.net
           cx_client_id: ${{ secrets.CX_CLIENT_ID }}
           cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
-          additional_params: '--debug --sast-filter "!**/test/**,!**/DB_Scripts/**,!**.git**"'
-          #additional_params: '--debug --sast-filter !**/**,**/Code/**,**/Content/**'
+          additional_params: '--debug'
