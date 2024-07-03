@@ -14,7 +14,7 @@ jobs:
       - name: Remove unneeded files
         run: |
           ls -la .
-          rm -rf test DB_Scripts .github
+          rm -rf test WebGoat/DB_Scripts .github .git .gitignore
           ls -la .
       - name: Checkmarx One CLI Action
         uses: checkmarx/ast-github-action@main #Github Action version
