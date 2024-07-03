@@ -13,9 +13,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Remove unneeded files
         run: |
-          ls -l
+          ls -la .
           rm -rf test DB_Scripts .github
-          ls -l
+          ls -la .
       - name: Checkmarx One CLI Action
         uses: checkmarx/ast-github-action@main #Github Action version
         with:
