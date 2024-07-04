@@ -11,11 +11,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      #- name: Remove unneeded files
-      #  run: |
-      #    ls -la .
-      #    rm -rf test WebGoat/DB_Scripts .github .git .gitignore WebGoat/Resources
-      #    ls -la .
+      - name: Remove unneeded files
+        run: |
+          ls -la .
+          rm -rf .github
+          ls -la .
       - name: Checkmarx One CLI Action
         uses: checkmarx/ast-github-action@main #Github Action version
         with:
@@ -24,4 +24,4 @@ jobs:
           base_uri: https://deu.ast.checkmarx.net
           cx_client_id: ${{ secrets.CX_CLIENT_ID }}
           cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
-          additional_params: '--debug --file-filter !DB_Scripts,!Resources,!.github,!.git,!.gitignore'
+          additional_params: '--debug --file-filter !*test*,!DB_Scripts,!Resources,!.git,!.gitignore'
