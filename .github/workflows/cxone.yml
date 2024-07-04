@@ -17,9 +17,10 @@ jobs:
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew install checkmarx/ast-cli/ast-cli
+          ls -la .
       - name: Checkmarx One CLI Scan
         run: |
-          cx scan create --project-name "rudy-marquez/WebGoatNet" --file-source "." --branch "main" --agent 'CLI' --base-uri "https://deu.ast.checkmarx.net" --tenant "${{ secrets.CX_TENANT}}" --client-id "${{ secrets.CX_CLIENT_ID }}" --client-secret "${{ secrets.CX_CLIENT_SECRET }}" --debug --file-filter "!*test*,!DB_*,!Resources,!.github,!.gitignore,!.git"
+          ./cx scan create --project-name "rudy-marquez/WebGoatNet" --file-source "." --branch "main" --agent 'CLI' --base-uri "https://deu.ast.checkmarx.net" --tenant "${{ secrets.CX_TENANT}}" --client-id "${{ secrets.CX_CLIENT_ID }}" --client-secret "${{ secrets.CX_CLIENT_SECRET }}" --debug --file-filter "!*test*,!DB_*,!Resources,!.github,!.gitignore,!.git"
       #- name: Remove .git directory and any other not needed files for SAST
       #  run: |
       #    ls -la .
