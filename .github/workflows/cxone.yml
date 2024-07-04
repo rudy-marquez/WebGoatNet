@@ -11,28 +11,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: CxOne CLI
-        id: cxonecli
+      - name: Remove .git directory and any other not needed files for SAST
         run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-          brew install checkmarx/ast-cli/ast-cli
-          ls -la .
-          ls -la /home/linuxbrew/.linuxbrew/Cellar/ast-cli/2.1.6
-      - name: Checkmarx One CLI Scan
-        run: |
-          ./cx scan create --project-name "rudy-marquez/WebGoatNet" --file-source "." --branch "main" --agent 'CLI' --base-uri "https://deu.ast.checkmarx.net" --tenant "${{ secrets.CX_TENANT}}" --client-id "${{ secrets.CX_CLIENT_ID }}" --client-secret "${{ secrets.CX_CLIENT_SECRET }}" --debug --file-filter "!*test*,!DB_*,!Resources,!.github,!.gitignore,!.git"
-      #- name: Remove .git directory and any other not needed files for SAST
-      #  run: |
-      #    ls -la .
-      #    rm -rf .git
-      #    ls -la .
-      #- name: Checkmarx One Github Action
-      #  uses: checkmarx/ast-github-action@main #Github Action version
-      #  with:
-      #    project_name: rudy-marquez/WebGoatNet
-      #    cx_tenant: ${{ secrets.CX_TENANT}}
-      #    base_uri: https://deu.ast.checkmarx.net
-      #    cx_client_id: ${{ secrets.CX_CLIENT_ID }}
-      #    cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
-      #    additional_params: '--debug --file-filter !*test*,!DB_*,!Resources,!.github,!.gitignore'
+          echo "before: " | ls -la .
+          rm -rf .git
+          echo "after: " | ls -la .
+      - name: Checkmarx One Github Action
+        uses: checkmarx/ast-github-action@main #Github Action version
+        with:
+          project_name: rudy-marquez/WebGoatNet
+          cx_tenant: ${{ secrets.CX_TENANT}}
+          base_uri: https://deu.ast.checkmarx.net
+          cx_client_id: ${{ secrets.CX_CLIENT_ID }}
+          cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
+          additional_params: '--debug --file-filter !*test*,!DB_*,!Resources,!.github,!.gitignore'
