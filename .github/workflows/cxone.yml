@@ -13,9 +13,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Remove .git directory and any other not needed files for SAST
         run: |
-          echo "before: " | ls -la .
+          ls -la .
           rm -rf .git
-          echo "after: " | ls -la .
+          ls -la .
       - name: Checkmarx One Github Action
         uses: checkmarx/ast-github-action@main #Github Action version
         with:
