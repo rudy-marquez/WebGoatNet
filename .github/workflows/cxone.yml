@@ -18,6 +18,7 @@ jobs:
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew install checkmarx/ast-cli/ast-cli
           ls -la .
+          ls -la /home/linuxbrew/.linuxbrew/Cellar/ast-cli/2.1.6
       - name: Checkmarx One CLI Scan
         run: |
           ./cx scan create --project-name "rudy-marquez/WebGoatNet" --file-source "." --branch "main" --agent 'CLI' --base-uri "https://deu.ast.checkmarx.net" --tenant "${{ secrets.CX_TENANT}}" --client-id "${{ secrets.CX_CLIENT_ID }}" --client-secret "${{ secrets.CX_CLIENT_SECRET }}" --debug --file-filter "!*test*,!DB_*,!Resources,!.github,!.gitignore,!.git"
