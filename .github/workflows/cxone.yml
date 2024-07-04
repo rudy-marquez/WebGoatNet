@@ -11,9 +11,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Remove .git directory and any other not needed files for SAST
+      - name: Remove .git directory and any other not needed files/folders for SAST
         run: |
-          ls -la .
+          #ls -la .
           rm -rf .git
           ls -la .
       - name: Checkmarx One Github Action
