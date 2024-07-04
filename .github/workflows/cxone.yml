@@ -15,13 +15,13 @@ jobs:
         run: |
           #ls -la .
           rm -rf .git
-          #ls -la .
-      - name: Checkmarx One CLI Action
+          ls -la .
+      - name: Checkmarx One Github Action
         uses: checkmarx/ast-github-action@main #Github Action version
         with:
           project_name: rudy-marquez/WebGoatNet
           cx_tenant: ${{ secrets.CX_TENANT}}
-          base_uri: https://deu.ast.checkmarx.net
+          base_uri: ${{ secrets.CX_BASE_URL}}
           cx_client_id: ${{ secrets.CX_CLIENT_ID }}
           cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
           additional_params: '--debug --file-filter !*test*,!DB_*,!Resources,!.github,!.gitignore'
