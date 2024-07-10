@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<users>
+  <user>
+    <name>Todd Smith</name>
+    <email>todd@example.com&lt;/email&gt;&lt;/user&gt;&lt;user&gt;&lt;name&gt;Tim Toe&lt;/name&gt;&lt;email&gt;tim@example.com</email>
+    <password>1234567</password>
+  </user>
+  <user>
+    <name>Al Thompson</name>
+    <email>al@example.com</email>
+    <password>123456</password>
+  </user>
+</users>
