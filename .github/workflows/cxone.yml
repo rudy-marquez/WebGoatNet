@@ -28,4 +28,4 @@ jobs:
           base_uri: ${{ secrets.CX_BASE_URL}}
           cx_client_id: ${{ secrets.CX_CLIENT_ID }}
           cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
-          additional_params: '--debug --file-filter !*test*,!DB_*,!Resources,!.github,!.gitignore'
+          additional_params: '--debug --file-filter !*test*'
