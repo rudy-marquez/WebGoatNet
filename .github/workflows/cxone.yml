@@ -19,7 +19,7 @@ jobs:
       - name: Rename .fxml to .xml
         run: |
           cd $GITHUB_WORKSPACE
-          find $GITHUB_WORKSPACE -type f -name "*.fxml" -exec rename 's/\.fxml$/.xml/' {} +
+          find $GITHUB_WORKSPACE -type f -name "*.fxml" -exec sh -c 'mv "$0" "${0%.fxml}.xml"' {} \;
       - name: Checkmarx One Github Action
         uses: checkmarx/ast-github-action@main #Github Action version
         with:
