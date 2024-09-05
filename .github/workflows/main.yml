@@ -35,7 +35,7 @@ jobs:
         incremental: false
         break_build: true
         error_merge: true
-        scanners: sca
+        scanners: sca, sast
         bug_tracker: wait
         sca_api_url: https://api.scacheckmarx.com
         sca_app_url: https://sca.scacheckmarx.com
